@@ -20,6 +20,9 @@ p,li {
 	margin-right: 10;
 }
 
+p.link{
+	text-align: left;
+	}
 .pari {
 	margin-left: 15px;
 	padding-top: 15px;

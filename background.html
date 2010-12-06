@@ -30,6 +30,7 @@
 	//Insert record into Table.
 	function insertRecord(addNote){
 	   db.transaction(function(SQLTransaction){
+		   
 	      SQLTransaction.executeSql("INSERT INTO note (text) VALUES (?)", [addNote]);
 	   });
 	}
@@ -94,7 +95,7 @@
 	}
 	
 	function renderTodo(row, parity) {
-		return "<div class='"+parity+"' id='"+row.id+"'>"+row.text+"</br></br><a name='modify"+row.id+"' href='javascript:modifyNote("+row.id+")'>Modify</a> <a href='javascript:deleteNote("+row.id+")'>Delete</a></div>";
+		return "<div class='"+parity+"' id='"+row.id+"'>"+row.text+"<p class='link'><a name='modify"+row.id+"' href='javascript:modifyNote("+row.id+")'>Modify</a> <a href='javascript:deleteNote("+row.id+")'>Delete</a></p></div>";
 	}
 		  
 </script>
