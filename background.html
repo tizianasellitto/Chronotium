@@ -1,0 +1,108 @@
+<html>
+<head>
+<script> 
+  var noteCount = -1;
+  var db=null;
+ 	//store note into the note table 	 
+	function store(addNote) {
+		insertRecord(addNote);
+		getNotes();
+	}
+	//update note into the note table 	
+	function updateNote(tabId, textNote, key) {
+		updateRecord(textNote,key);
+		getNotes();
+		listNotes(tabId);
+	}
+	//delete note into the note table 	 
+	function deleteNote(tabId, key) {
+		deleteRecord(key);
+		getNotes();
+		listNotes(tabId);
+	}
+	//Create table note
+	function createTable(){
+	   db.transaction(function(SQLTransaction){
+	        SQLTransaction.executeSql(
+	        "CREATE TABLE IF NOT EXISTS note(id INTEGER PRIMARY KEY, text TEXT)", []);
+      	});
+	}
+	//Insert record into Table.
+	function insertRecord(addNote){
+	   db.transaction(function(SQLTransaction){
+	      SQLTransaction.executeSql("INSERT INTO note (text) VALUES (?)", [addNote]);
+	   });
+	}
+	//Modify record into Table.
+	function updateRecord(textNote,key){
+	   db.transaction(function(SQLTransaction){
+	      SQLTransaction.executeSql("UPDATE note SET text =(?) WHERE id= (?)", [textNote,key]);
+	   });
+	}
+	//Delete record into Table.
+	function deleteRecord(id){
+	   db.transaction(function(SQLTransaction){
+	      SQLTransaction.executeSql('DELETE FROM note WHERE id = (?)', [id]);
+	        });
+	}
+	//Get notes and update badge 
+	function getNotes() {
+		db.transaction(function (tx) {
+			tx.executeSql('SELECT * FROM note ORDER BY id DESC', [], function (tx, results) {
+			  var len = results.rows.length, i;
+			  if(len!=noteCount){
+				  chrome.browserAction.setBadgeText ( { text: ""+len} );
+				  noteCount=len;
+				  chrome.extension.sendRequest(noteCount);
+				  }
+			  else{
+				  chrome.browserAction.setBadgeText ( { text: ""+noteCount} );
+			 	  chrome.extension.sendRequest(noteCount);
+			 	  }
+			 
+			 });
+		});
+	}
+
+	function listNotes(tabId) {
+		db.transaction(function (tx) {
+			tx.executeSql('SELECT * FROM note ORDER BY id DESC', [], function (tx, results) {
+			  var len = results.rows.length, i;
+				var rowOutput = "";
+				for (var i=0; i < len; i++) {
+					if(i%2==0)
+						parity="pari";
+					else
+						parity="dispari";
+			    	rowOutput += renderTodo(results.rows.item(i),parity);
+				 }
+			chrome.extension.sendRequest( {notes: rowOutput});
+ 			});//close executeSql
+		});//close dbTransaction
+	}
+
+	function init() {
+		try {
+		      	db = openDatabase('db_notes', '1.0',  'Database Note', 1024*1024*3);
+		        if (!db)
+		            alert("Errore nella creazione del database");
+		        else{
+		        	createTable();
+		        	getNotes(); 
+		        }  
+		}catch(err) {}
+	}
+	
+	function renderTodo(row, parity) {
+		return "<div class='"+parity+"' id='"+row.id+"'>"+row.text+"</br></br><a name='modify"+row.id+"' href='javascript:modifyNote("+row.id+")'>Modify</a> <a href='javascript:deleteNote("+row.id+")'>Delete</a></div>";
+	}
+		  
+</script>
+</head>
+</head>
+
+<body onload="init()">
+</body>
+</html>
+</html>
+

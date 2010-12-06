@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+<link href="all.css" rel="stylesheet" type="text/css" media="screen" /> 
+
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body >
+	<div class="header">
+		<div id="tabs">
+			<a id="new" class="attivo" href="javascript:add(); ">Add</a> 	
+			<a id="list" href="javascript:notes();" >Notes</a>
+		</div>
+	</div>
+	
+<div id="container">
+	<p id="notification" ></p>
+	<div id="add" >
+		<form id="formNotes" name="formNotes">
+			<textarea id="notes" cols=44 rows=8 required autofocus></textarea> 
+			<input type="submit" value="Add note" OnClick="javascript:store();"/>
+			<input type="reset" value="Clear" OnClick="javascript:clearNotification();"/>
+		</form>
+	</div>
+	<div id="listNotes">
+	</div>	
+</div>
+</body>
+</html>

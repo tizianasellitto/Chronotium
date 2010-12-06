@@ -1,0 +1,152 @@
+html,body,div {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body {
+	line-height: 1;
+	background-color: #f9f9f9;
+	font-family: Arial, Liberation Sans, DejaVu Sans, sans-serif;
+	font-size: 80%;
+	text-align: center;
+}
+
+p,li {
+	text-align: center;
+	margin-right: 10;
+}
+
+.pari {
+	margin-left: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: justify;
+	border-top: 1px solid #dbdbdb;
+	min-height: 40px;
+	width: 310px;
+}
+
+.dispari {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-left: 15px;
+	text-align: justify;
+	border-top: 1px solid #dbdbdb;
+	min-height: 40px;
+	width: 310px;
+}
+
+textarea {
+	font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
+		DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+		serif;
+	border: 1px solid #999;
+	font-size: 90%;
+	vertical-align: -50%;
+}
+
+input,button {
+	border: 1px solid #999;
+	background-color: #dbdbdb;
+	font-size: 100%;
+	font-family: Trebuchet MS, Liberation Sans, DejaVu Sans, sans-serif;
+}
+
+input {
+	cursor: pointer;
+	margin: 5px 0 5px 0;
+	padding: 3px;
+}
+
+.attivo {
+	background: #f90;
+}
+
+.attivo a {
+	color: #fff;
+}
+
+.header {
+	border-bottom: 1px solid #666;
+	height: 34px;
+	clear: both;
+	margin-bottom: 15px;
+}
+
+#notification {
+	border: 0;
+	color: red;
+	top: 20px;
+	left: 10px;
+}
+
+div#container {
+	overflow: auto;
+	background-color: #f9f9f9;
+	width: 370px;
+	height: 250px;
+	position: relative;
+}
+
+div#add {
+	width: 370px;
+	height: 220px;
+	position: absolute;
+	left: 0px;
+	top: 30px;
+	right: 10px;
+	bottom: 0px;
+	z-index: 1;
+}
+
+div#listNotes {
+	position: absolute;
+	width: 370px;
+	height: 220px;
+	overflow: auto;
+	left: 0px;
+	top: 30px;
+	bottom: 0px;
+	z-index: -1;
+	}
+
+#tabs {
+	float: right;
+	font-weight: bold;
+}
+
+#tabs a {
+	border: 1px solid #f9f9f9;
+	color: #777;
+	display: block;
+	float: left;
+	font-size: 90%;
+	height: 24px;
+	line-height: 22px;
+	margin: 8px 8px 0 0;
+	padding: 0 11px 0 11px;
+	text-decoration: none;
+}
+
+#tabs a:hover {
+	background-color: #f9f9f9;
+	border: 1px solid #777;
+	border-bottom-color: #f9f9f9;
+	line-height: 20px;
+	margin-top: 9px;
+}
+
+#tabs a.attivo {
+	background-color: #f9f9f9;
+	border: 1px solid #777;
+	border-bottom-color: #f9f9f9;
+	font-size: 110%;
+	height: 30px;
+	line-height: 28px;
+	margin-top: 3px;
+	padding: 0 11px 0 11px;
+}

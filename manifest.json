@@ -1,0 +1,19 @@
+
+
+{
+  "name": "Chronotium",
+  "version": "1.0",
+  "description": "Basic note extension",
+  "background_page": "background.html",
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+ "content_scripts": [ {
+      "js": [ "script.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+     }],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "popup": "popup.html"
+  }
+}
