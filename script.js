@@ -1,16 +1,18 @@
 function store() {
 	if (!document.formNotes.notes.validity.valueMissing
-			&& document.formNotes.notes.value.match(/./g)) {
+	//			&& document.formNotes.notes.value.match(/./g)
+	)
+{
 		temp = document.formNotes.notes.value;
 		escapedHTML = clearText(temp);
 		chrome.extension.getBackgroundPage().store(escapedHTML);
-		document.getElementById('notification').innerHTML = "Note added successfully";
-		document.formNotes.reset();
-	} else {
-		document.getElementById('notification').innerHTML = "Please enter some text into the note field";
-		document.formNotes.reset();
-		document.formNotes.notes.autufocus = true;
-	}
+	//	document.getElementById('notification').innerHTML = "Note added successfully";
+		//document.formNotes.reset();
+	} //else {
+	//	document.getElementById('notification').innerHTML = "Please enter some text into the note field";
+	//	document.formNotes.reset();
+	//	document.formNotes.notes.autufocus = true;
+	//}
 }
 
 function notes() {
