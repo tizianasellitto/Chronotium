@@ -1,8 +1,6 @@
-
-
 {
   "name": "Chronotium",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Basic note extension",
   "background_page": "background.html",
   "permissions": [
